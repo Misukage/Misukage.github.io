@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>letras</title>
+    <style>
+        /* Estilos básicos y responsivos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .content {
+            white-space: pre-wrap;
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            min-height: 150px;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Letras de Himnos al Senor.</h1>
+
+        <div class="content" id="file">
+            <div class="output" id="output"></div>
+        </div>
+        
+    </div>
+
+    <script>
+       
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = ''; // Limpiar la salida
+            if(localStorage.length > 0) {
+                for(let i = 0; i < localStorage.length; i++) {
+                    const clave = localStorage.key(i);
+                    const valor = localStorage.getItem(clave);
+                    outputDiv.innerHTML += `<p><strong>${clave}:</strong> <br> ${valor}<br><br></p>`;
+                }
+            } else {
+                outputDiv.innerHTML = '<p>No hay datos almacenados en el LocalStorage.</p>';
+            }
+        
+    </script>
+
+
+
+</body>
+</html>
